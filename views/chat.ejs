@@ -1,0 +1,327 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="/Images/new logo.png">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="/CSS/chatbox/style.css">
+        <script>
+            const roomName = "<%= roomName %>"
+            const UserName="<%= Username %>"
+        </script>
+    </head>
+    <body class="body">
+
+        <div  class="friends-col">
+
+            <div class="header">
+                <div class="left-side">
+                    <button class="user-profile-pic" onclick="profile_switch_btn();"><img src="./Images/ChatBox/female avatar.svg" id = "user-profile-pic-img-src"> <span class="profile"> Change profile </span> </button>
+                </div>
+                <div class="right-side">
+                    <!-- light mode button starts from here -->
+                    <button class="right-nav move-more-left" id="lightmode_btn">
+                        <a>
+                            <svg width="43.1" height="43.1" viewBox="0 0 281 281" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                <g id="switch 1" clip-path="url(#clip0)">
+                                <g id="Group">
+                                <path id="light-mode-bg" d="M87.509 52.505H192.519C240.85 52.505 280.028 91.683 280.028 140.014C280.028 188.327 240.85 227.523 192.519 227.523H87.509C39.186 227.522 0 188.327 0 140.014C0 91.691 39.186 52.505 87.509 52.505Z"/>
+                                <g id="lightmode-switch">
+                                <path id="switch" d="M195.256 79C229.087 79 256.512 106.425 256.512 140.256C256.512 174.096 229.087 201.512 195.256 201.512C161.434 201.512 134 174.096 134 140.256C134 106.425 161.434 79 195.256 79Z"/>
+                                </g>
+                                </g>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0">
+                                <rect width="280.028" height="280.028" fill="white"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                            <span  class="light-mode"> Toggle dark/light mode </span>
+                        </a>
+                    </button>
+                    <!-- light mode button ends here and log out button starts here-->
+                    <button class="right-nav move-left">
+                        <a href="logout"><img src="./Images/ChatBox/power-button.svg"><span  class="Log-Out"> logout </span></a>
+                    </button>
+                    <nav>
+                        <div class="dropdown">
+                            <!-- log out button ends here and friend request starts here -->
+                            <div class="friend-request-list">
+                                <button class="right-nav friend-request-btn" id="friend-request-btn"  onclick="">
+                                    <svg width="512" height="457" viewBox="0 0 512 457" fill="none" xmlns="http://www.w3.org/2000/svg" class="friend-req-img">
+                                        <g id="Friend-Request">
+                                        <g id="Group">
+                                        <g id="Group_2">
+                                        <path id="Vector" d="M425.857 329.728V377.219C425.857 380.577 423.127 383.307 419.758 383.307H223.591C220.222 383.307 217.492 380.577 217.492 377.219V329.728C217.492 286.028 252.92 250.6 296.631 250.6H346.719C360.585 250.6 373.617 254.164 384.949 260.438C409.343 273.913 425.857 299.894 425.857 329.728Z" fill="#8F67FF"/>
+                                        <path id="Vector_2" d="M425.857 329.728V377.219C425.857 380.577 423.127 383.307 419.758 383.307H325.177C374.574 348.188 384.526 295.484 384.948 260.437C409.343 273.913 425.857 299.894 425.857 329.728Z" fill="#7A48FF"/>
+                                        <path id="Vector_3" d="M381.847 162.695C381.847 195.929 354.908 222.868 321.674 222.868C309.528 222.868 298.237 219.273 288.78 213.081C272.349 202.346 261.501 183.783 261.501 162.695C261.501 129.472 288.44 102.532 321.674 102.532C327.649 102.532 333.418 103.397 338.857 105.025C363.716 112.411 381.847 135.436 381.847 162.695Z" fill="#8F67FF"/>
+                                        <path id="Vector_4" d="M381.847 162.695C381.847 195.929 354.908 222.868 321.674 222.868C309.528 222.868 298.237 219.273 288.78 213.081C337.229 185.06 341.525 135.457 338.857 105.025C363.716 112.411 381.847 135.436 381.847 162.695Z" fill="#7A48FF"/>
+                                        </g>
+                                        <g id="Group_3">
+                                        <path id="Vector_5" d="M290.079 381.814V447.921C290.079 452.608 286.278 456.41 281.59 456.41H8.489C3.802 456.41 0 452.608 0 447.921V381.814C0 320.971 49.325 271.646 110.168 271.646H179.911C197.3 271.646 213.752 275.674 228.371 282.865C264.922 300.78 290.079 338.361 290.079 381.814Z" fill="#FF5677"/>
+                                        <path id="Vector_6" d="M290.079 381.814V447.921C290.079 452.608 286.278 456.41 281.59 456.41H188.224C246.574 402.294 237.323 321.652 228.37 282.865C264.922 300.78 290.079 338.361 290.079 381.814Z" fill="#FF2953"/>
+                                        <path id="Vector_7" d="M228.803 162.592C228.803 208.858 191.304 246.356 145.039 246.356C128.381 246.356 112.846 241.494 99.804 233.108C76.625 218.211 61.265 192.199 61.265 162.592C61.265 116.326 98.774 78.818 145.039 78.818C164.685 78.818 182.754 85.586 197.043 96.918C216.39 112.257 228.803 135.982 228.803 162.592Z" fill="#FF5677"/>
+                                        <path id="Vector_8" d="M228.803 162.592C228.803 208.858 191.304 246.356 145.039 246.356C128.381 246.356 112.846 241.494 99.804 233.108C174.842 193.786 193.448 134.726 197.043 96.918C216.39 112.257 228.803 135.982 228.803 162.592Z" fill="#FF2953"/>
+                                        </g>
+                                        </g>
+                                        <g id="request-recieved">
+                                        <path id="Vector_9" d="M512 21.072V147.324C512 158.966 502.57 168.396 490.928 168.396H364.676C353.034 168.396 343.604 158.966 343.604 147.324V21.072C343.604 9.43 353.034 0 364.676 0H490.928C502.57 0 512 9.43 512 21.072Z" fill="#FF5677"/>
+                                        <path id="*" d="M419.695 90.0878L398.461 83.7597L401.695 73.1425L422.93 81.0175L422.297 56.83H433.055L432.352 81.3691L453.234 73.6347L456.469 84.3222L434.883 90.7206L448.805 109.775L440.086 116.385L427.008 96.1347L414.352 115.893L405.562 109.494L419.695 90.0878Z" fill="#D8D2D2"/>
+                                        <path id="Vector_10" d="M512 21.072V147.324C512 158.966 502.57 168.396 490.928 168.396H389.689C484.93 135.889 478.674 40.068 475.219 0H490.928C502.57 0 512 9.43 512 21.072Z" fill="#FF2953"/>
+                                        </g>
+                                        </g>
+                                        </svg><img src="Images/ChatBox/close.svg" class="close-friend-btn"><span class="friend-req"> Friend Request </span>                                                                         
+                                </button>
+                                <ul class="friend-req-ul" id="friend-req-ul">
+                                    <div class="scrollbar">
+                                    <li class="friend-request" id="friend-request">
+                                        <% for(let i=0;i<friendlist.length;i++) { %>
+                                            <div class="remove" id="<%= friendlist[i].pingUserMailID %>">
+                                        <div>
+                                            <p><h4 id="FriendName"><%= friendlist[i].pingUserName %></h4>
+                                            <h5 id="FriendMail"><%= friendlist[i].pingUserMailID %></h5></p>
+                                        </div>
+                                        <div class="friend-req-btn">
+                                            <button class="btn accept" id="accept"  onclick="AcceptRequest('<%= friendlist[i].pingUserName %>','<%= friendlist[i].pingUserMailID %>','<%= Username %>');">Accept</button>
+                                            <button class="btn decline" onclick="DeclineRequest('<%= friendlist[i].pingUserName %>','<%= friendlist[i].pingUserMailID %>');">Decline</button>
+                                        </div>  
+                                    </div>
+                                    <% } %> 
+                                    </li>
+                                </div>
+                                </ul>
+                            </div>
+                            <!-- friend Request ends here and add friend starts here-->
+                            <div class="add-friend">
+                                <button class="right-nav move-right">
+                                    <img src="./Images/ChatBox/add friend.svg" class="friend-add-img"> <img src="./Images/ChatBox/close.svg" class="close"> <span class="add-frnd"> Add Friend </span>
+                                </button>
+                                <ul class="add-friend-ul">
+                                    <li><div class="add-friend-searcharea">
+                                        
+                                        <input type="text" style="resize: none;" placeholder="Friend Email ID" class="add-friend-search" name="email" id="email">
+                                        <button class="add-friend-search-btn" onclick="checkemail();"><img src="./Images/ChatBox/searching.svg" class="search"></button> 
+                                   
+                                    </div></li>
+                                        
+                                </ul>
+                           
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- drop down menus end here-->
+            <h2 class="friend-list-txt">Friend List</h2>
+            <!--search bar-->
+
+        <!--<div class="search_bar">
+            <input type="text" placeholder="Search Friend list" class="search-friendlist">
+        </div>-->
+
+        <!-- Search Bar Ends Here-->
+        <div class="friendlist" id = "friendjs">
+            <% let friendli=Object.values(friends); 
+      for(let i=0;i<friendli.length;i++){ %>
+      <div id="<%= friendli[i].Id %>" class="friendli" group = "list" onclick="clicked(this); myFunction();checkBlock(this); document.getElementById('nikal').style.opacity='1'; chatbox_display();">
+             <div class="sec1">
+                  <div class="user-profile-pic"> <img src="Avatars/<%= friendli[i].pic %>" id="UserProfilePictureClick"> </div>
+                </div>
+                <div class="sec2">
+                       <h4><%= friendli[i].Name %></h4>
+                       <h6 id= "mailID" ><%= friendli[i].Id%></h6>
+                </div>
+                 <div class="sec3">
+                
+                    <div class="online-offline" id = "color-status" style="background-color: red;"></div>
+                  
+                </div>
+          
+      </div>
+      <% } %>
+        </div>
+    </div>
+        
+        <!--left side ends here-->
+
+        <!--Chat box Starts here-->
+
+        <div class="chatbox bg">
+
+        <!--landing page code-->
+            
+
+        <div class="landing page" id="landing-intro">
+
+            <svg width="268.1" height="222.4" viewBox="0 0 681 224" fill="none" xmlns="http://www.w3.org/2000/svg" id="logo">
+            <path id="p" d="M184.527 20.992L166.671 6.01599C165.231 4.86399 163.215 3.99998 160.911 3.99998H6.255C4.239 3.99998 2.799 6.30399 3.951 8.03198L30.447 50.944H40.527V112.864H16.335C14.319 112.864 13.167 115.168 14.319 116.896L40.527 159.52V220H87.471V159.808H164.943C167.247 159.808 169.263 159.232 170.703 157.792L184.527 146.272C186.543 144.544 187.983 142.24 187.983 139.36L187.695 27.904C187.695 25.024 186.543 22.72 184.527 20.992ZM140.751 104.8C140.751 109.408 137.295 112.864 132.687 112.864H73.647L87.471 107.968V50.944H132.687C137.295 50.944 140.751 54.688 140.751 59.296V104.8Z"  stroke="white" stroke-width="5"/>
+            <path id="i" d="M193.326 8.32L219.822 51.232H227.886H242.862L227.886 57.28V220H274.83V3.99998H195.342C193.326 3.99998 192.174 6.59198 193.326 8.32Z"  stroke="white" stroke-width="5"/>
+            <path id="n" d="M506.041 3.99998H459.097V139.936L379.033 3.99998H378.745H299.545C297.529 3.99998 296.377 6.59198 297.529 8.32L324.025 51.232H346.777L332.089 57.28V220H378.745V97.024L450.457 220H506.041V3.99998Z"  stroke="white" stroke-width="5"/>
+            <path id="g" d="M664.88 92.992L591.728 93.28C589.712 93.28 588.56 95.584 589.424 97.312L616.208 139.936H638.96L623.984 145.984V173.344H582.224C578.48 172.768 575.6 169.312 575.6 165.28V57.856L562.352 50.656H649.616L676.4 8.03198C677.264 6.30399 676.112 3.99998 674.096 3.99998H555.44C553.424 3.99998 551.408 4.57599 549.68 6.01599L531.824 20.704C529.808 22.432 528.656 25.024 528.656 27.616V199.552C528.656 202.144 529.808 204.736 531.824 206.464L545.648 217.984C547.376 219.424 549.392 220 551.408 220H649.616C651.344 220 653.072 219.136 654.512 217.984L669.2 202.144C670.352 200.992 670.928 199.264 670.928 197.536V99.04C670.928 95.584 668.336 92.992 664.88 92.992Z" stroke="white" stroke-width="5"/>
+            </svg>
+        
+        </div>
+
+        <!-- landing page code ends here and profile page code starts here-->
+
+<div class="profile_page switch_profile" id="profile_page_1">
+    <button class="profile_close_btn" onclick="profile_switch_btn();" ><img src="Images/ChatBox/close.svg" class="close_profile_btn_img"></button>
+    <div class="wrapper">
+        <div class="left">
+          <button type="button" class="avtar-button" a href="javascript:void(0)" onclick="toggle_visibility('popupBoxThreePosition');"><img src="Avatars/<%= profilePic %>" class="avtar" id = "newProfilePicture"></button>
+            <div id="popupBoxThreePosition" class="popupBoxWrapper">
+             <div class="popupBoxContent1">
+                <div>
+                <% for(i=0; i<avatarNames.length; i++) { %>
+                <button type="submit" class="avtar-button-popup" onclick="toggle_visibility('popupBoxThreePosition'); changeProfilePic(document.getElementById('changeProfilePicture<%= i %>').src)">
+                   <img src="Avatars/<%= avatarNames[i] %>" class="avtars" id = "changeProfilePicture<%= i %>">
+                </button>
+                <% } %>
+                </div>
+             </div>
+           </div>
+           <br><br>
+           <!-- the users name and status are here -->
+            <h4><%= Username %></h4>
+             <p id="statusPrint"><%= status %></p>
+        </div>
+        <!-- the left side code ends here -->
+    
+        <div class="right">
+            <div class="info">
+                <h3>Information</h3>
+                <div class="info_data">
+                     <div class="data">
+                        <h4>Email</h4>
+                        <p><%= roomName %></p>
+                     </div>
+                </div>
+            </div>
+          <br>
+          <div class="projects">
+             <h3>Profile Settings</h3>
+                <div class="projects_data">
+                     <div class="data">
+                      <br><h4>Status</h4>
+                        
+                         <div id="popupBoxOnePosition" class="popupBoxWrapper">
+                           <div class="popupBoxContent">
+                             <h3>Set New Status</h3>
+                               <input type="text" id="status" name="status" class="new-status" maxlength="100"><br><br>	
+                               <p><button onclick="toggle_visibility('popupBoxOnePosition')" class="popup-button"> Back </button> 
+                                <input type="submit" name="submit" id="submit" class="submit" value="Set New Status" onclick="toggle_visibility('popupBoxOnePosition'); changeStatus();"></p>
+                           </div>
+                         </div>
+                            <div id="wrapper">
+                                    <p><button type="button" class="button_on_profile" onclick="toggle_visibility('popupBoxOnePosition'); ">Change Status</a></button></p>
+                            </div><!-- wrapper end -->
+                     </div>
+                     <div class="data">
+                       <h4>Change Password</h4>
+                       <div id="popupBoxTwoPosition" class="popupBoxWrapper">
+                           <div class="popupBoxContent">
+                             <h3>Set New Password </h3>
+                               <br><input type="password" id="form_password" onkeyup="checkPasswordStrength(this); addEventListener" maxlength="16" class="pass" placeholder="Enter New Password" <br><span class="pass-info"> Password must contain at least 8 characters having at least one upper and lower case letter, one special character and at least one number. </span>>
+                               <br><br><input type="password" id="form_password_re" onkeyup="check_retype_password(this); addEventListener" maxlength="16" class="pass check" placeholder="Re-Enter New Password">	
+                               <p><button onclick="toggle_visibility('popupBoxTwoPosition')" class="popup-button"> Back </button> 
+                                <input type="submit" value="Set New Password" class="submit-btn"  onclick="toggle_visibility('popupBoxTwoPosition'); changePass();"></p>
+                           </div>
+                        </div>
+                            <div id="wrapper">
+                                    <p><button type="button" class="button_on_profile" onclick="toggle_visibility('popupBoxTwoPosition');">Set New Password</a></button></p>
+                            </div><!-- wrapper end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- profile page code ends here and chating related code starts here-->
+        
+            <div class="small-profile">
+                <div class="sp_buttons">
+                    <button class="sp_back_button" onclick="chatbox_display();">
+                        <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="back_button_img">
+                            <g id="undo 1">
+                            <path id="Vector" d="M333.845 187.559H114.416L171.363 122.775C177.11 116.506 176.588 106.58 169.796 100.833C163.527 95.0857 153.6 95.6082 147.853 102.4L67.9184 192.784C67.9184 193.306 67.3959 193.306 67.3959 193.829C66.8735 194.351 66.8735 194.351 66.351 194.873C65.8286 195.396 65.8286 195.918 65.8286 196.441C65.8286 196.963 65.3061 196.963 65.3061 197.486C65.3061 198.008 64.7837 198.531 64.7837 199.053C64.7837 199.575 64.7837 199.576 64.2612 200.098C63.7388 202.188 63.7388 204.278 64.2612 205.845C64.2612 206.367 64.2612 206.367 64.7837 206.89C64.7837 207.412 65.3061 207.935 65.3061 208.457C65.3061 208.98 65.8286 208.98 65.8286 209.502C65.8286 210.024 66.351 210.547 66.351 211.069C66.351 211.592 66.8735 211.592 67.3959 212.114C67.3959 212.637 67.9184 212.637 67.9184 213.159L147.331 304.065C150.465 307.722 154.645 309.29 159.347 309.29C163.004 309.29 166.661 308.245 169.796 305.633C176.065 299.886 177.11 289.959 171.363 283.69L114.416 218.906H333.845C379.298 218.906 416.392 256 416.392 301.453C416.392 346.906 379.298 384 333.845 384H100.833C91.951 384 85.1592 390.792 85.1592 399.673C85.1592 408.555 91.951 415.347 100.833 415.347H333.845C396.539 415.347 447.739 364.147 447.739 301.453C447.739 238.759 396.539 187.559 333.845 187.559Z" fill="#0099EF"/>
+                            </g>
+                        </svg>
+                    </button>
+                    <button class="sp_profile_img" onclick="friend_profile_display()"><img src="./Images/ChatBox/Male Avatar.svg"></button>
+                </div>
+                <div class="sp_textarea">
+                    <h4 id="friend_name_mobile" onclick="friend_profile_display()"></h4>
+                    <h5 id="friend_status_mobile" onclick="friend_profile_display()"></h5>
+                </div>
+            </div>
+            <div class="chatlogs" id="message-container">
+
+            </div>
+            <div class="chat-form">
+                <div id="block_friend_functionality" class="block_friend_functionality" >
+                    <button class="button key" id = "keyboard"><img src="./Images/ChatBox/keyboard.svg" class="keboard"><span class="key-btn"> Devanagari Script keyboard </span></button>
+                    <div class="textarea" id = "hide">
+                    <form id = "send-container">
+                        <input type = 'text' style="resize: none;" placeholder="Type your message here" class="text-area" id = "message-input">
+                        <input type = 'text' name='name' id='txt1' style='font-family:KF-Kiran;font-size:20px;' class="devnagri-keyboard" placeholder="अपना पाठ यहाँ लिखें" >
+                    </div>
+                    <button type="submit" class="button" id="send"> <img src="./Images/ChatBox/send-button.svg" class="send-button"> </button>
+                    </form>
+                    <form method = "POST" action="/l" enctype="multipart/form-data" class="file-div" id = "Transfer" hidden>
+                        <input type="file" name = "file" class="choosefile-button" id = "file"/>
+                        <input type="submit" class="file-button" id ="s" value="Upload"/>
+                     </form>
+                    <button class="button" onclick="filetransfer();" id = "toddler"> <img src="Images/ChatBox/attach-file.svg" class="attach-file"> </button>
+                </div>
+                <h1 id="block_friend_text" class="block_friend_text"> This friend has been blocked </h1>
+            </div>
+        </div>
+
+        <!--chat colum ends here-->
+        
+        <div class="friend-profile page" >
+            <div class="right-header">
+                <div class="logo">
+                    <div class="ping-logo"> <img src="./Images/ChatBox/new logo.png" class="ping-logo-img"> <img src="Images/ChatBox/ping light mode logo.png" class="ping-light-mode-logo-img"> </div>
+                </div>
+                <div class="block-back-button" id="block_back_button">
+                    <button class="block-friend" id="blockFriendButton" onclick="blockfriend()"> 
+                        <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="block-friend-img">
+                        <g id="forbidden 1">
+                        <g id="Group">
+                        <path id="block_friend_color" d="M256 448.278C214.418 448.278 175.922 435.076 144.468 412.64L256.048 301.061L266.046 256.047L256.048 210.945L99.4026 367.59C76.9407 336.125 63.7222 297.607 63.7222 256.001C63.7222 149.808 149.808 63.7232 256 63.7232H256.047L266.045 29.0426L256.047 0.000999815C256.031 0.000999815 256.016 0 256 0C114.615 0 0 114.615 0 256C0 397.384 114.615 511.999 256 511.999C256.016 511.999 256.031 511.998 256.047 511.998L266.045 478.957L256.047 448.276C256.032 448.277 256.016 448.278 256 448.278V448.278Z"/>
+                        <path id="block_friend_color1" d="M511.952 256C511.952 114.631 397.363 0.0259952 256 0V63.7222C297.588 63.7322 336.089 76.9487 367.542 99.4016L256 210.945V301.061L412.593 144.468C435.03 175.922 448.23 214.419 448.23 256C448.23 362.176 362.17 448.251 256 448.277V511.999C397.363 511.973 511.952 397.368 511.952 256V256Z"/>
+                        </g>
+                        </g>
+                        </svg>
+                        <span  class="block-friend-hover"> Block/Unblock friend </span></button>
+                    <button class="back_button" onclick="friend_profile_display()">
+                        <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="back_button_img">
+                            <g id="undo 1">
+                            <path id="Vector" d="M333.845 187.559H114.416L171.363 122.775C177.11 116.506 176.588 106.58 169.796 100.833C163.527 95.0857 153.6 95.6082 147.853 102.4L67.9184 192.784C67.9184 193.306 67.3959 193.306 67.3959 193.829C66.8735 194.351 66.8735 194.351 66.351 194.873C65.8286 195.396 65.8286 195.918 65.8286 196.441C65.8286 196.963 65.3061 196.963 65.3061 197.486C65.3061 198.008 64.7837 198.531 64.7837 199.053C64.7837 199.575 64.7837 199.576 64.2612 200.098C63.7388 202.188 63.7388 204.278 64.2612 205.845C64.2612 206.367 64.2612 206.367 64.7837 206.89C64.7837 207.412 65.3061 207.935 65.3061 208.457C65.3061 208.98 65.8286 208.98 65.8286 209.502C65.8286 210.024 66.351 210.547 66.351 211.069C66.351 211.592 66.8735 211.592 67.3959 212.114C67.3959 212.637 67.9184 212.637 67.9184 213.159L147.331 304.065C150.465 307.722 154.645 309.29 159.347 309.29C163.004 309.29 166.661 308.245 169.796 305.633C176.065 299.886 177.11 289.959 171.363 283.69L114.416 218.906H333.845C379.298 218.906 416.392 256 416.392 301.453C416.392 346.906 379.298 384 333.845 384H100.833C91.951 384 85.1592 390.792 85.1592 399.673C85.1592 408.555 91.951 415.347 100.833 415.347H333.845C396.539 415.347 447.739 364.147 447.739 301.453C447.739 238.759 396.539 187.559 333.845 187.559Z" fill="#0099EF"/>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="nikal" id="nikal">
+            <div class="profile-img"><img id="nikalImage" src="Avatars\Male Avatar.svg"></div>
+            <div class="friend-name"><h1 id = "friend_name">Friend Name </h1></div><br>
+            <div class="friend-status"><h3 id = "friend-status"></h3></div>
+            <!--<br><h5 class="star-h5">Stared Messages:-</h5>
+            <div class="stared-messages-box"><div class="star-message">hi <div></div>-->
+            </div>
+        </div>
+
+        <!--friend profile ends here-->
+        
+        <script src="./JScript/chatBox/app.js" async defer></script>
+    </body>
+</html>

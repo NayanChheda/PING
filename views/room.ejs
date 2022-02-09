@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/Images/new logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    #usernames{
+      background-color:#eee; 
+    }
+    #usernames:hover{
+           background-color: blue;
+           color:#eee;
+    }
+    #message-container {
+      width: 80%;
+      max-width: 1200px;
+    }
+
+    #message-container div {
+      background-color: #CCC;
+      padding: 5px;
+    }
+
+    #message-container div:nth-child(2n) {
+      background-color: #FFF;
+    }
+
+    #send-container {
+      position: fixed;
+      padding-bottom: 30px;
+      bottom: 0;
+      background-color: white;
+      max-width: 1200px;
+      width: 80%;
+      display: flex;
+    }
+
+    #message-input {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="message-container"></div>
+
+  <form method = "POST" action="/l" enctype="multipart/form-data" id = "Transfer" >
+   <input type="file" name = "file" id = "file"/>
+   <input type="submit" id ="s" value="Upload"/>
+ </form>
+  <div id = "user-list"  style="height: 500px; width:300px; background-color: red;"> 
+    <input type = "Search" id = "user_mail"/>
+     <% var friendli=Object.values(friends); 
+      for(let i=0;i<friendli.length;i++) { %>
+      <div id="friendname" style="height:25px; cursor: pointer;" onclick="clicked(this);"><%= friendli[i]%></div>
+      <% } %>
+    </div>
+  </div>
+  <form id="send-container">
+    <input type="text" id="message-input">
+    <button type="submit" id="send-button">Send</button>
+  </form>
+</body>
+</html>

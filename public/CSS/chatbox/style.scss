@@ -1,0 +1,1128 @@
+body{
+  background-color: rgb(0, 0, 0);
+  padding: 2px;
+  margin: 2px;
+}
+
+.friends-col{
+  position: fixed;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 99%;
+  width: 25%;
+  background: rgb(31, 31, 31);
+  padding: 0;
+  border-radius: 7px;
+  border: 2px solid rgb(66,133,244);
+  z-index: 5;
+}
+
+/*header style starts here*/
+
+.header{
+display: flex;
+height: 60px;
+width: 100%;
+}
+
+.left-side{
+width: 20%;
+height: auto;
+}
+
+.user-profile-pic{
+position: relative;
+background-color: transparent;
+margin: 5px;
+height: 50px;
+width: 50px;
+cursor: pointer;
+}
+
+.user-profile-pic img {
+width: 100%;
+cursor: pointer;
+}
+
+.user-profile-pic .profile{
+visibility: hidden;
+width: 80px;
+background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+transform: translate(20px,-5px);
+}
+
+.user-profile-pic:hover .profile{
+visibility: visible;
+}
+
+.right-side{
+width: 80%;
+height: auto;
+}
+
+.dropdown{
+height: auto;
+display: flex;
+flex-direction: row-reverse;
+margin-right: -135px;
+}
+
+.right-nav{
+height: 50px;
+width: 50px;
+background-color: transparent;
+border-color: transparent;
+cursor: pointer;
+}
+
+.friend-request-btn{
+transform: translateX(20px);
+}
+
+.move-right{
+transform: translateX(215px);
+}
+
+.move-left{
+position: absolute;
+right:4px;
+align-self: auto;
+}
+
+.move-left .Log-Out {
+visibility: hidden;
+width: 80px;
+background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+z-index: 6;
+transform: translate(-80px,45px);
+}
+
+.move-left:hover .Log-Out{
+visibility: visible;
+}
+
+.friend-req-img,
+.friend-add-img{
+height: 100%;
+width: 100%;
+}
+
+.right-nav .friend-req{
+visibility: hidden;
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+z-index: 6;
+transform: translate(-80px,50px);
+}
+
+.right-nav:hover .friend-req{
+visibility: visible;
+}
+
+.friend-request{
+padding: 10px;
+width: 200px;
+height: fit-content;
+background-color: rgb(77, 77, 77);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+border-radius: 10px;
+border-top: 2px solid black;
+color: rgb(216, 216, 216);
+}
+
+.friend-req-btn{
+padding-left: 4px;
+}
+
+.btn {
+color: aliceblue;
+width: 70px;
+margin-left: 15px;
+border-radius: 10px;
+cursor: pointer;
+}
+
+.accept{
+background-color: rgb(0, 207, 0);
+}
+
+.decline{
+background-color: rgb(201, 0, 0);
+}
+
+/*use the next code to hide the notification of  friend request*/
+
+/*
+#request-recieved{
+opacity: 0;
+}
+*/
+
+.move-right .add-frnd{
+visibility: hidden;
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+transform: translate(-80px, 40px);
+}
+
+.move-right:hover .add-frnd{
+visibility: visible;
+}
+
+.add-friend-searcharea {
+display: flex;
+flex-direction: row;
+align-items: center;
+background-color: rgb(197, 197, 197);
+border-radius: 10px;
+padding: 5px;
+}
+
+.add-friend-search{
+width: 150px;
+height: 20px;
+cursor: text;
+}
+
+.add-friend-search-btn{
+background-color: transparent;
+border-color: transparent;
+height: 40px;
+width: 40px;
+cursor: pointer;
+}
+
+.friend-add-img{
+position: absolute;
+width: 80%;
+opacity: 1;
+margin-top: -9px;
+transition: 0.4s ease;
+}
+
+.close{
+position: relative;
+width: 90%;
+opacity: 0;
+transition: 0.4 ease;
+}
+
+.friend-add-img.friend-add-active{
+opacity: 0;
+transition: 0.4s ease;
+}
+
+.friend-req-img.img-off{
+opacity: 0;
+transition: 0.4s ease;
+}
+
+.close.close-active{
+opacity: 1;
+transition: 0.4s ease;
+}
+
+
+
+
+.search{
+width: 100%;
+}
+
+.add-friend-result{
+padding: 5px;
+width: 200px;
+height: fit-content;
+background-color: rgb(77, 77, 77);
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-top: 5px;
+border-radius: 10px;
+border-top: 2px solid rgb(24, 17, 119);
+color:  rgb(216, 216, 216);
+}
+
+.send-request{
+color: aliceblue;
+width: 70px;
+margin-top: 30px;
+border-radius: 10px;
+background-color: rgb(0, 110, 255);
+cursor: pointer;
+}
+
+.add-friend ul{
+transform: translateX(100px);
+}
+
+.friend-req-ul{
+list-style: none;
+opacity: 0;
+pointer-events: none;
+transform: translateY(-10px);
+transform: translateX(-150px);
+}
+
+.close-friend-btn{
+position: absolute;
+padding-top: 5px;
+width: 70%;
+opacity: 0;
+transition: 0.4 ease;
+transform: translateX(-35px);
+}
+
+.close-friend-btn.close-is-on{
+opacity: 1;
+transition: o.4 ease;
+}
+
+.add-friend-ul{
+pointer-events: none;
+opacity: 0;
+list-style: none;
+transform: translateY(-10px);
+transform: translateX(100px);
+}
+
+.friend-req-ul.request-ul-on{
+opacity: 1;
+pointer-events: all;
+}
+
+.add-friend-ul.active{
+opacity: 1;
+pointer-events: all;
+}
+
+/*header style ends here*/
+
+.search_bar{
+width: 100%;
+height: 60px;
+align-items: center;
+text-align: center;
+}
+
+.search-friendlist{
+width: 95%;
+height: 30px;
+font-size: 18px;
+margin-top: 25px;
+border-radius: 10px;
+}
+
+/*searchbox style ends here*/
+
+.txt{
+color: rgb(202, 202, 202);
+transform: translateX(20px);
+z-index: -1;
+}
+
+.friendlist{
+width: 100%;
+height: 90%;
+display: flex;
+flex-direction: column;
+overflow-y: scroll;
+}
+
+.friendlist::-webkit-scrollbar {
+width: 5px;
+
+}
+
+.friendlist::-webkit-scrollbar-thumb{
+border-radius: 5px;
+background: rgba(255, 255, 255, 0.253);
+}
+
+.friendli{
+height: 80px;
+width: 100%;
+display: flex;
+flex-direction: row;
+border-top: 2px black;
+cursor: pointer;
+}
+
+.friendli:hover {
+background-color: #00000059;
+}
+
+.sec1{
+height: 60px;
+width: 60px;
+transform: translateY(10px);
+}
+
+.sec2{
+height: 60px;
+width: 250px;
+margin-top: -20px;
+margin-left: 10px;
+color: aliceblue;
+transform: translateY(27px);
+line-height: 0.0;
+z-index: -1;
+}
+
+.sec3{
+width: auto;
+height: auto;
+transform: translateY(10px);
+z-index: -1;
+}
+
+.online-offline{
+margin-top: 50%;
+background-color: firebrick;
+border-radius: 50%;
+height: 20px;
+width: 20px;
+transform: translateY(12px);
+}
+
+.btn:focus,
+.add-friend-search-btn:focus,
+.right-nav:focus,
+.user-profile-pic:focus,
+.send-request:focus,
+.button:focus,
+.submit:focus {
+outline: none;
+}
+
+
+
+/*the friends col design ends here and the chat box design starts here*/
+
+
+.landing{
+  z-index: -5;
+  position: absolute;
+  display: flex;
+  height: 99.5%;
+  width: 99.5%;
+  padding: 0;
+  border-radius: 7px;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background: linear-gradient(-45deg, #302f2f, #242424, #000000, #000000);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 30s ease infinite;
+        animation: gradient 30s ease infinite;
+}
+
+
+
+.page{
+  z-index: 4;
+}
+
+#logo {
+height: auto;
+width: 40%;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+position: absolute;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+-webkit-animation: fill 0.5 ease forwards 12.1s;
+        animation: fill 0.5 ease forwards 12.1s;
+}
+
+#logo path:nth-child(1) {
+stroke-dasharray: 840;
+stroke-dashoffset: 840px;
+-webkit-animation: line-animation 2s ease forwards 0.3s;
+        animation: line-animation 2s ease forwards 0.3s;
+}
+
+#logo path:nth-child(2) {
+stroke-dasharray: 650;
+stroke-dashoffset: 650px;
+-webkit-animation: line-animation 2.5s ease forwards 0.6s;
+        animation: line-animation 2.5s ease forwards 0.6s;
+}
+
+#logo path:nth-child(3) {
+stroke-dasharray: 1325;
+stroke-dashoffset: 1325px;
+-webkit-animation: line-animation 2.5s ease forwards 0.9s;
+        animation: line-animation 2.5s ease forwards 0.9s;
+}
+
+#logo path:nth-child(4) {
+stroke-dasharray: 1165;
+stroke-dashoffset: 1165px;
+-webkit-animation: line-animation 3s ease forwards 1.2s;
+        animation: line-animation 3s ease forwards 1.2s;
+}
+
+@-webkit-keyframes line-animation {
+to {
+  stroke-dashoffset: 0;
+}
+}
+
+@keyframes line-animation {
+to {
+  stroke-dashoffset: 0;
+}
+}
+
+@-webkit-keyframes fill {
+from {
+  fill: transparent;
+}
+to {
+  fill: rgba(255, 255, 255, 0.8);
+}
+}
+
+@keyframes fill {
+from {
+  fill: transparent;
+}
+to {
+  fill: rgba(255, 255, 255, 0.8);
+}
+}
+
+
+@keyframes gradient {
+0% {
+  background-position: 0% 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0% 50%;
+}
+}
+
+/* landing page ends here */
+
+/* profile page starts here */
+
+.profile_page{
+position: absolute;
+z-index: 6;
+height: 100%;
+width: 100%;
+border-radius: 10px;
+box-sizing: border-box;
+list-style: none;
+font-family: 'Josefin Sans', sans-serif;
+display: flex;
+background: linear-gradient(-75deg, #141414, #230024, #120027, #000014);
+background-size: 400% 400%;
+animation: gradient 30s ease infinite;
+}
+
+.switch_profile{
+z-index: -6;
+}
+
+@keyframes gradient 
+{
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}
+
+.profile_close_btn{
+display: flex;
+height: 30px;
+width: 30px;
+margin-left: 92.5%;
+margin-top: 2%;
+padding: 0%;
+background-color: transparent;
+border-style: none;
+cursor: pointer;
+}
+
+.close_profile_btn_img{
+width: 30px;
+height: 30px;
+}
+
+
+.wrapper{
+position: absolute;
+border-radius: 7px;
+border: 3px solid rgb(66,133,244); 
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+width: 450px;
+display: flex;
+box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+}
+
+.wrapper .left{
+width: 35%;
+background: linear-gradient(to right,#01a9ac,#01dbdf);
+padding: 30px 25px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+text-align: center;
+color: #fff;
+}
+
+.wrapper .left img{
+border-radius: 5px;
+margin-bottom: 10px;
+}
+
+.wrapper .left h4{
+margin-bottom: 10px;
+}
+
+.wrapper .left p{
+font-size: 12px;
+}
+
+.wrapper .right{
+width: 65%;
+background:  #000000a6;
+padding: 30px 25px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+}
+
+.wrapper .right .info,
+.wrapper .right .projects{
+margin-bottom: 25px;
+}
+
+.wrapper .right .info h3,
+.wrapper .right .projects h3{
+margin-bottom: 7px;
+padding-bottom: 5px;
+border-bottom: 1px solid #e0e0e0;
+color: #98a3d6;
+text-transform: uppercase;
+letter-spacing: 5px;
+}
+
+.wrapper .right .projects h4{
+text-align: center;
+}
+
+.wrapper .right .info_data,
+.wrapper .right .projects_data{
+display: flex;
+justify-content: space-between;
+}
+
+.wrapper .right .info_data .data,
+.wrapper .right .projects_data .data{
+width: 45%;
+}
+
+.wrapper .right .info_data .data h4,
+.wrapper .right .projects_data .data h4{
+color: #353c4e;
+margin-bottom: 5px;
+}
+
+.wrapper .right .info_data .data p,
+.wrapper .right .projects_data .data p{
+font-size: 13px;
+margin-bottom: 10px;
+color: #dbdbdb;
+font-size: 15px;
+}
+
+.wrapper .social_media ul{
+display: flex;
+}
+
+.wrapper .social_media ul li{
+width: 45px;
+height: 45px;
+background: linear-gradient(to right,#01a9ac,#01dbdf);
+margin-right: 10px;
+border-radius: 5px;
+text-align: center;
+line-height: 45px;
+}
+
+.wrapper .social_media ul li a{
+color :#fff;
+display: block;
+font-size: 18px;
+}
+
+
+#popupBoxOnePosition{
+top: 0; left: 0; position: fixed; width: 100%; height: 90%;
+background-color: rgba(0, 0, 0, 0.205); display: none;
+}
+#popupBoxTwoPosition{
+top: 0; left: 0; position: fixed; width: 100%; height: 90%;
+background-color: rgba(0, 0, 0, 0.205); display: none;
+}
+#popupBoxThreePosition{
+top: 0; left: 0; position: fixed; width: 100%; height: 90%;
+background-color: rgba(0, 0, 0, 0.205); display: none;
+}
+.popupBoxWrapper{
+width: 550px;
+  margin: 50px auto;
+  text-align: left;
+}
+.popupBoxContent{
+background-color: rgb(20, 20, 20); padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: none;
+  border-color: transparent;
+}
+.popupBoxContent1{
+background-color: rgb(0, 0, 0); padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: none;
+  border-color: transparent;
+}
+.container input
+{
+padding: 5px;
+margin-bottom: 30px;
+width: 55%;
+box-sizing: border-box;
+box-shadow: none;
+outline: none;
+border:none;
+border-bottom: 2px solid #999;
+}
+.container input[type="submit"]
+{
+border-radius: 25px;
+font-size: 20px;
+height: 40px;
+cursor : pointer;
+background: rgb(66,133,244);
+color: #fff;
+margin-bottom: 0;
+}
+.container input[type="submit"]:hover
+{
+background: #34F458;
+color: #fff;
+}
+.new-status{
+width: 100%;
+border-color: black;
+font-size: 18px;
+padding-left: 5px;
+}
+.submit{
+text-align: center;
+align-self: center;
+background: rgb(179, 149, 248);
+padding: 4px;
+color: white;
+border-radius: 10px;
+cursor: pointer;
+}
+.submit-btn{
+text-align: center;
+align-self: center;
+background: rgb(36, 36, 36);
+padding: 4px;
+color: white;
+border-radius: 10px;
+pointer-events: none;
+}
+.pass{
+text-align: center;
+width: 70%;
+border-color: rgb(171, 179, 204);
+margin-top: 8px;
+font-size: 18px;
+padding-left: 5px;
+border-radius: 10px;
+list-style: none;
+outline: none;
+}
+.button_on_profile,
+.popup-button{
+padding: 5px;
+background: rgb(149, 149, 238);
+border-radius: 10px;
+color: antiquewhite;
+cursor: pointer;
+}
+.avtar-button{
+width: 100px;
+height: 100px;
+background-color: transparent;
+border-radius: 50%;
+cursor: pointer;
+margin-top: 75%;
+}
+.avtar-button-popup{
+width: 150px;
+height: 150px;
+background-color: transparent;
+border-color: transparent;
+border-style: none;
+justify-content: space-between;
+}
+.avtars{
+width: 100%;
+height: 100%;
+}
+.popup-button{
+position: absolute;
+margin-left: -30%;
+}
+.pass-info{
+left: 1%;
+width: 425px;
+height: fit-content;
+padding: 7px;
+position: absolute;
+background-color: #251e63;
+color: white;
+border-radius: 10px;
+transform: translateY(-70px);
+visibility: hidden;
+}
+.pass:focus + span{
+visibility: visible;
+}
+.submit-btn.active{
+pointer-events: all;
+cursor: pointer;
+background-color: rgb(82, 82, 252);
+}
+
+/* profile page ends here */
+
+.chatbox{
+  position: fixed;
+  display: flex;
+  margin-left: 25.35%;
+  height: 99%;
+  width: 50%;
+  padding: 0;
+  border-radius: 7px;
+  border: 2px solid rgb(66,133,244);
+}
+
+.bg{
+  background-image: radial-gradient(black,rgb(37, 36, 36));
+}
+
+.chatlogs {
+  position: relative;
+  margin-bottom: 5px;
+  padding: -2px;
+  padding-bottom: -30px;
+  width: 100%;
+  height: 93%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  background-image: radial-gradient(black,rgb(37, 36, 36));
+  color: rgb(255, 255, 255);
+  overflow-y: scroll;
+}
+
+.chatlogs::-webkit-scrollbar {
+  width: 5px;
+
+}
+
+.chatlogs::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.253);
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat .chat-message-one{
+  width: fit-content;
+  max-width: 70%;
+  height: auto;
+  padding: 10px;
+  margin: 5px 10px 0;
+  background: rgb(109, 112, 114);
+  border-radius: 10px;
+  border-bottom-left-radius: 0px;
+  font-size: 18px;
+}
+
+.chat .chat-message-two{
+  text-align: right;
+  width: fit-content;
+  max-width: 70%;
+  height: auto;
+  padding: 10px;
+  margin: 5px 10px 0;
+  background: rgb(54, 54, 54);
+  border-radius: 10px;
+  border-bottom-right-radius: 0px;
+  font-size: 18px;
+}
+
+.friend{
+  width: auto;
+  height: auto;
+}
+
+.user{
+  width: auto;
+  height: auto;
+  align-items: flex-end;
+}
+
+.time-stamp{
+  font-size: 11px;
+}
+
+.chat-form{
+  position: absolute;
+  display: flex;
+  bottom: 0px;
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+}
+
+.keyboard{
+  width: 20%;
+  height: auto;
+}
+
+.key .key-btn{
+visibility: hidden;
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 5px 0;
+position: absolute;
+z-index: 1;
+transform: translate(-60px,-60px);
+}
+
+.key:hover .key-btn{
+visibility: visible;
+}
+
+.textarea{
+  width: 78%;
+  height: 35px;
+  margin-left: 1%;
+  border-radius: 10px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.904);
+}
+
+.text-area{
+position: absolute;
+margin: 0%;
+width: 77%;
+height: 35px;
+padding: 5px;
+padding-left: 10px;
+border-radius: 10px;
+font-size: 18px;
+font-family: Arial, Helvetica, sans-serif, monospace;
+background: rgba(245, 245, 245, 0.904);
+opacity: 1;
+pointer-events: all;
+transition: 0.4s ease-in;
+}
+.text-area:focus, input:focus{
+  outline: 0;
+}
+
+.text-area::-webkit-scrollbar {
+  width: 5px;
+}
+
+.text-area::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.815);
+}
+
+.devnagri-keyboard{
+position: relative;
+margin: 0%;
+width: 100%;
+height: 35px;
+padding: 5px;
+padding-left: 10px;
+border-radius: 10px;
+font-size: 18px;
+background: rgba(245, 245, 245, 0.904);
+opacity: 0;
+pointer-events: none;
+}
+.devnagri-keyboard:focus, input:focus{
+outline: 0;
+}
+
+.devnagri-keyboard::-webkit-scrollbar {
+width: 5px;
+}
+
+.devnagri-keyboard::-webkit-scrollbar-thumb{
+border-radius: 5px;
+background: rgba(0, 0, 0, 0.815);
+}
+
+.text-area.switch{
+opacity: 0;
+pointer-events: none;
+transition: 0.4s ease;
+}
+
+.devnagri-keyboard.hin-switch{
+opacity: 1;
+pointer-events: all;
+transition: 0.4s ease-in;
+}
+
+
+.attach-file{
+  width: auto;
+  height: 30px;
+}
+
+.send-button{
+  width: auto;
+  height: 30px;
+  margin-right: 1%;
+  padding-left: 2%;
+}
+
+.button{
+  background: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.submit{
+cursor: pointer;
+}
+
+/*the chat box design ends here and the friend profile designe starts here*/
+
+.friend-profile{
+  position: fixed;
+  display: flex;
+  margin-left: 76%;
+  height: 99%;
+  width: 23%;
+  background: rgb(31, 31, 31);
+  padding: 0;
+  border-radius: 7px;
+  border: 2px solid rgb(66,133,244);
+  flex-direction: column;
+}
+
+.ping-logo{
+  height: 15%;
+  width: auto;
+  margin: 5px;
+  text-align: right;
+}
+
+
+.ping-logo-img{
+  height: 50%;
+  width: auto;
+  transform-origin: center;
+}
+
+.profile-img{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  align-self: center;
+}
+
+.profile-img img {
+  width: 100%;
+}
+
+@media (max-width: 900px){
+.profile-img {
+      width: 150px;
+      height: 150px;
+      display: block;
+      margin: 0 auto;
+      padding: 0;
+  }
+}
+
+@media (max-width: 700px){
+  .profile-img {
+         width: 100px;
+         height: 100px;
+         display: block;
+         margin: 0 auto;
+         padding: 0;
+  }
+}
+
+.friend-name,
+.friend-status,
+.friend-email{
+width: auto;
+line-height: 0.0;
+text-align: center;
+color: seashell;
+}
+
+.friend-status{
+line-height: normal;
+}

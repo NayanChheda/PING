@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/Images/new logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is the main page</h1>
+    <a href="/SignUp">Sign Up</a><br>
+    <a href="/SignIn">Sign In</a><br>
+    <%=Message%>
+    <% if(!value){ %>
+        <h1>foo</h1>
+    <% } else{ %>  
+        <h1>bar</h1>
+    <% } %>
+    <%for(i=0;i<Object.keys(result[0]).length;i++){%>
+        <p><%=result[0][i].pingUserMailID%></p>
+    <%};%>
+</body>
+</html>

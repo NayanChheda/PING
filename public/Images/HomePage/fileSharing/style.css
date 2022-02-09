@@ -1,0 +1,39 @@
+*{
+	margin: 0;
+	padding:
+	box-sizing: border-box;
+}
+
+body{
+	text-align: center;
+}
+
+#head {
+	animation: head 1s ease-in-out infinite alternate;
+	transform-origin: center;
+}
+
+#files {
+	animation: files 2s ease-in-out infinite alternate;
+	transform-origin: center;
+	transform-box: fill-box;
+}
+
+@keyframes head{
+	from {
+		transform: rotateX(0deg);
+	}
+	to{
+		transform: rotateX(15deg);
+	}
+
+}
+
+@keyframes files{
+	from{
+		transform: rotateZ(-2deg);
+	}
+	to{
+		transform: rotateZ(5deg);
+	}
+}

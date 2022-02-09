@@ -1,0 +1,87 @@
+.container {
+  margin: 90px auto;
+  width: 600px;
+  height: 500px;
+}
+
+.box
+{
+	text-align: center;
+	font-size: 20px;
+	height: auto;
+	width: auto;
+	padding: 20px;
+	background:rgba(0%, 0%, 0%, 0.2);
+	margin: 0;
+	opacity: 1;
+	border-radius: 7px;
+	border: 3px solid rgb(66,133,244);
+}
+
+.box-text {
+	color: white;
+}
+
+.body {
+	display: flex;
+	background: linear-gradient(-45deg, #000000, #0a35f7, #05023a, #23a6d5);
+	background-size: 500% 500%;
+	animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.email-img{
+	text-align: center;
+}
+
+#Head{
+    animation: head 2s ease infinite alternate;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#File{
+    animation: File 1s infinite alternate;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes head{
+    from{
+        transform: rotateZ(-5deg);
+    }
+    to{
+        transform: rotateZ(5deg);
+    }
+}
+
+@keyframes File{
+    from{
+        transform: rotateZ(-5deg);
+    }
+    to{
+        transform: rotateZ(5deg);
+    }
+}
+
+.btn{
+	padding: 7px;
+	width: 100px;
+	text-decoration: none;
+	color: whitesmoke;
+	border-radius: 7px;
+	border: 3px solid rgb(3, 0, 190);
+	background: rgba(133, 0, 0, 0.274);
+}
+
